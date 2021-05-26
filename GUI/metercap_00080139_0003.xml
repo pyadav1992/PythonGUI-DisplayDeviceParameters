@@ -1,0 +1,143 @@
+<capabilityfile_meter capfile_version="0005" device_model="00080139" software_version="0003" date="2015-06-16">
+<!-- IS2T Coffee machine -->
+
+<interfaces>
+	<iface>device.interfaces.eth0</iface>
+</interfaces>
+
+<group name="Program" description="Coffee Machine">
+
+	<parameter name="thread_info.demo_id" description="Demo ID" paramid="7" type="string" default="" restartrequired="0" readonly="0">
+		<restrictions>
+			<length value="20" />
+		</restrictions>
+	</parameter>
+
+</group>
+<group name="Network" description="Network">
+	<parameter name="thread_info.mac_address" description="MAC Address (hex)" paramid="46" type="string" default="" restartrequired="0" readonly="1">
+		<restrictions>
+			<length value="20" />
+		</restrictions>
+	</parameter>
+
+	<parameter name="thread_info.ipv4_address" description="IPv4 Address" paramid="47" type="string" default="" restartrequired="0" readonly="1">
+		<restrictions>
+			<length value="50" />
+		</restrictions>
+	</parameter>
+</group>
+
+
+<!-- statistics -->
+<static_description>
+	<available_objects>
+		<object_group name="CoffeeMachine">
+
+				<object name="coffee_machine.couple_count" description="Couple Count">
+					<statistics>
+						<stat name="count" unit="" id="1054" type="uint32">
+							<attributes>
+							</attributes>
+						</stat>
+					</statistics>
+				</object>
+
+				<object name="coffee_machine.single_count" description="Single Count">
+					<statistics>
+						<stat name="count" unit="" id="1055" type="uint32">
+							<attributes>
+							</attributes>
+						</stat>
+					</statistics>
+				</object>
+
+				<object name="coffee_machine.lungo_count" description="Lungo Count">
+					<statistics>
+						<stat name="count" unit="" id="1056" type="uint32">
+							<attributes>
+							</attributes>
+						</stat>
+					</statistics>
+				</object>
+
+				<!-- possible values: -->
+				<!--   "unknown"              = 0 -->
+				<!--   "single"               = 1 -->
+				<!--   "couple"               = 2 -->
+				<!--   "lungo"                = 3 -->
+				<object name="coffee_machine.program" description="Coffee Program">
+					<statistics>
+						<stat name="count" unit="" id="1057" type="uint32">
+							<attributes>
+							</attributes>
+						</stat>
+					</statistics>
+				</object>
+
+				<!-- possible values: -->
+				<!--   "unknown" = 0 -->
+				<!--   "empty"   = 1 -->
+				<!--   "full"    = 2 -->
+				<object name="coffee_machine.water_tank" description="Water Tank">
+					<statistics>
+						<stat name="count" unit="" id="1058" type="uint32">
+							<attributes>
+							</attributes>
+						</stat>
+					</statistics>
+				</object>
+
+				<!-- possible values: -->
+				<!--   "unknown" = 0 -->
+				<!--   "on"      = 1 -->
+				<!--   "off"     = 2 -->
+				<object name="coffee_machine.power" description="Power">
+					<statistics>
+						<stat name="count" unit="" id="1059" type="uint32">
+							<attributes>
+							</attributes>
+						</stat>
+					</statistics>
+				</object>
+
+				<!-- possible values: -->
+				<!--   "unknown" = 0 -->
+				<!--   "open"    = 1 -->
+				<!--   "closed"  = 2 -->
+				<object name="coffee_machine.top_door" description="Top Door">
+					<statistics>
+						<stat name="count" unit="" id="1060" type="uint32">
+							<attributes>
+							</attributes>
+						</stat>
+					</statistics>
+				</object>
+
+				<!-- possible values: -->
+				<!--   "unknown" = 0 -->
+				<!--   "on"      = 1 -->
+				<!--   "off"     = 2 -->
+				<object name="coffee_machine.heating" description="Heating">
+					<statistics>
+						<stat name="count" unit="" id="1061" type="uint32">
+							<attributes>
+							</attributes>
+						</stat>
+					</statistics>
+				</object>
+
+				<object name="coffee_machine.water_temperature" description="Water Temperature">
+					<statistics>
+						<stat name="count" unit="" id="1062" type="uint32">
+							<attributes>
+							</attributes>
+						</stat>
+					</statistics>
+				</object>
+
+		</object_group>
+	</available_objects>
+</static_description>
+
+</capabilityfile_meter>

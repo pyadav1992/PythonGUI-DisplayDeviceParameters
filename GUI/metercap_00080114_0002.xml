@@ -1,0 +1,385 @@
+<capabilityfile_meter capfile_version="0005" device_model="00080114" software_version="0002" date="2015-05-15">
+<!-- Freescale Smart Home Gateway -->
+
+
+<interfaces>
+	<iface>device.interfaces.eth0</iface>
+	<iface>device.interfaces.wlan0</iface>
+	<iface>device.interfaces.zigbee0</iface><!-- 6LowPAN -->
+</interfaces>
+
+
+<!-- configuration -->
+<group name="system" description="System Info">
+
+	<!-- operating system info -->
+	<parameter name="Operating_System/osArch" description="Operating System Architecture" paramid="6" type="string" default="" restartrequired="0" readonly="1">
+		<restrictions>
+			<length value="50" />
+		</restrictions>
+	</parameter>
+	<parameter name="Operating_System/osName" description="Operating System Name" paramid="7" type="string" default="" restartrequired="0" readonly="1">
+		<restrictions>
+			<length value="50" />
+		</restrictions>
+	</parameter>
+	<parameter name="Operating_System/osVersion" description="Operating System Version" paramid="8" type="string" default="" restartrequired="0" readonly="1">
+		<restrictions>
+			<length value="50" />
+		</restrictions>
+	</parameter>
+	<parameter name="Operating_System/hostname" description="Hostname" paramid="9" type="string" default="" restartrequired="0" readonly="1">
+		<restrictions>
+			<length value="50" />
+		</restrictions>
+	</parameter>
+	<parameter name="Operating_System/DISTRIB_ID" description="Distribution ID" paramid="11" type="string" default="" restartrequired="0" readonly="1">
+		<restrictions>
+			<length value="50" />
+		</restrictions>
+	</parameter>
+	<parameter name="Operating_System/DISTRIB_RELEASE" description="Distribution Release" paramid="12" type="string" default="" restartrequired="0" readonly="1">
+		<restrictions>
+			<length value="50" />
+		</restrictions>
+	</parameter>
+	<parameter name="Operating_System/DISTRIB_CODENAME" description="Distribution Codename" paramid="13" type="string" default="" restartrequired="0" readonly="1">
+		<restrictions>
+			<length value="50" />
+		</restrictions>
+	</parameter>
+	<parameter name="Operating_System/DISTRIB_DESCRIPTION" description="Distribution Description" paramid="14" type="string" default="" restartrequired="0" readonly="1">
+		<restrictions>
+			<length value="80" />
+		</restrictions>
+	</parameter>
+
+  	<!-- java info -->
+	<parameter name="Java_Info/jreVersion" description="JRE Version" paramid="4" type="string" default="" restartrequired="0" readonly="1">
+		<restrictions>
+			<length value="50" />
+		</restrictions>
+	</parameter>
+	<parameter name="Java_Info/jreVendor" description="JRE Vendor" paramid="5" type="string" default="" restartrequired="0" readonly="1">
+		<restrictions>
+			<length value="50" />
+		</restrictions>
+	</parameter>
+  
+</group>
+
+
+<group name="system_ifaces" description="System Interfaces">
+
+	<!-- eth0 -->
+	<parameter name="system_ifaces.eth0_ipv4" description="Ethernet 0 IP Address" paramid="15" type="string" default="" restartrequired="0" readonly="1">
+		<restrictions>
+			<length value="50" />
+		</restrictions>
+	</parameter>
+	<parameter name="system_ifaces.eth0_mac" description="Ethernet 0 MAC Address" paramid="16" type="string" default="" restartrequired="0" readonly="1">
+		<restrictions>
+			<length value="50" />
+		</restrictions>
+	</parameter>
+
+	<!-- wifi -->
+	<parameter name="system_ifaces.wifi_ipv4" description="WiFi IP Address" paramid="17" type="string" default="" restartrequired="0" readonly="1">
+		<restrictions>
+			<length value="50" />
+		</restrictions>
+	</parameter>
+	<parameter name="system_ifaces.wifi_mac" description="WiFi MAC Address" paramid="18" type="string" default="" restartrequired="0" readonly="1">
+		<restrictions>
+			<length value="50" />
+		</restrictions>
+	</parameter>
+
+	<!-- flstun/flxeip -->
+	<parameter name="system_ifaces.fsltun_ipv6_addr" description="Thread IP Address" paramid="21" type="string" default="" restartrequired="0" readonly="1">
+		<restrictions>
+			<length value="50" />
+		</restrictions>
+	</parameter>
+	<parameter name="system_ifaces.fsltun_mac_addr" description="Thread MAC Address" paramid="22" type="string" default="" restartrequired="0" readonly="1">
+		<restrictions>
+			<length value="50" />
+		</restrictions>
+	</parameter>
+
+	<!-- bluetooth -->
+	<parameter name="system_ifaces.bluetooth_device_address" description="Bluetooth Device Address" paramid="19" type="string" default="" restartrequired="0" readonly="1">
+		<restrictions>
+			<length value="50" />
+		</restrictions>
+	</parameter>
+
+</group>
+
+
+<group name="remote_access" description="Remote Access">
+
+	<parameter name="ssh_gw_user" description="SSH Gateway User" paramid="301" type="string" default="sshdebug" restartrequired="0" readonly="0">
+		<restrictions>
+			<length value="20" />
+		</restrictions>
+	</parameter>
+
+	<parameter name="ssh_gw_host" description="SSH Gateway Host" paramid="302" type="string" default="54.149.17.208" restartrequired="0" readonly="0">
+		<restrictions>
+			<length value="80" />
+		</restrictions>
+	</parameter>
+
+	<parameter name="ssh_gw_port" description="SSH Gateway Port" paramid="303" type="uint32" default="22" restartrequired="0" readonly="0">
+		<restrictions>
+			<min value="1"/>
+			<max value="65535"/>
+			<step value="1"/>
+		</restrictions>
+	</parameter>
+
+	<parameter name="ssh_local_port" description="SSH Local Port" paramid="304" type="uint32" default="9897" restartrequired="0" readonly="0">
+		<restrictions>
+			<min value="1"/>
+			<max value="65535"/>
+			<step value="1"/>
+		</restrictions>
+	</parameter>
+
+	<parameter name="ssh_tunnel_state" description="SSH Tunnel State" paramid="305" type="enum" default="0" restartrequired="0" readonly="0">
+		<restrictions>
+			<option description="Close" value="0" />
+			<option description="Open" value="1" />
+		</restrictions>
+	</parameter>
+
+</group>
+
+<group name="airsync_agent" description="Airsync Agent">
+
+	<!-- Agent Info -->
+	<parameter name="Agent_Info/agent_version" description="Agent Version" paramid="20" type="string" default="" restartrequired="0" readonly="1">
+		<restrictions>
+			<length value="40" />
+		</restrictions>
+	</parameter>
+
+	<!-- Agent Configuration -->
+	<parameter name="Agent_Configuration/synch_status_interval" description="Periodic Airsync Reporting Interval [s]" paramid="50" type="uint32" default="30" restartrequired="0" readonly="0" hint="Range: 1-10000 [s]">
+		<restrictions>
+			<min value="1"/>
+			<max value="10000"/>
+			<step value="1"/>
+		</restrictions>
+	</parameter>
+<!-- 
+	<parameter name="Agent Configuration/node_polling_interval" description="Node Polling Interval [ms/dev]" paramid="51" type="uint32" default="500" restartrequired="0" readonly="0" hint="Range: 100-100000 [ms]">
+		<restrictions>
+			<min value="10"/>
+			<max value="100000"/>
+			<step value="1"/>
+		</restrictions>
+	</parameter>
+-->
+
+</group>
+
+
+<!-- statistics -->
+<static_description>
+	<available_objects>
+		<object_group name="IotGateway">
+
+				<!-- jre stats -->
+				<object name="dev.jre.memoryUsage" description="Java Memory Usage">
+					<statistics>
+						<stat name="count" unit="%" id="1001" type="double">
+							<attributes>
+							</attributes>
+						</stat>
+					</statistics>
+				</object>
+				<object name="dev.jre.uptime" description="Java Uptime">
+					<statistics>
+						<stat name="count" unit="s" id="1002" type="uint32">
+							<attributes>
+							</attributes>
+						</stat>
+					</statistics>
+				</object>
+
+				<!-- system stats -->
+				<object name="dev.system.memoryUsage" description="System Memory Usage">
+					<statistics>
+						<stat name="count" unit="%" id="1003" type="double">
+							<attributes>
+							</attributes>
+						</stat>
+					</statistics>
+				</object>
+				<object name="dev.system.uptime" description="System Uptime">
+					<statistics>
+						<stat name="count" unit="s" id="1004" type="uint32">
+							<attributes>
+							</attributes>
+						</stat>
+					</statistics>
+				</object>
+
+				<!-- eth0 rates -->
+				<object name="iface.eth0.rxBitRateDouble" description="Ethernet Receive Bit Rate">
+					<statistics>
+						<stat name="rate" unit="bps" id="2007" type="double">
+							<attributes>
+							</attributes>
+						</stat>
+					</statistics>
+				</object>
+				<object name="iface.eth0.rxPacketsRateDouble" description="Ethernet Receive Packet Rate">
+					<statistics>
+						<stat name="rate" unit="Packet/s" id="2008" type="double">
+							<attributes>
+							</attributes>
+						</stat>
+					</statistics>
+				</object>
+				<object name="iface.eth0.rxErrorsRateDouble" description="Ethernet Receive Error Rate">
+					<statistics>
+						<stat name="rate" unit="Errors/s" id="2009" type="double">
+							<attributes>
+							</attributes>
+						</stat>
+					</statistics>
+				</object>
+				<object name="iface.eth0.txBitRateDouble" description="Ethernet Transmit Bit Rate">
+					<statistics>
+						<stat name="rate" unit="bps" id="2010" type="double">
+							<attributes>
+							</attributes>
+						</stat>
+					</statistics>
+				</object>
+				<object name="iface.eth0.txPacketsRateDouble" description="Ethernet Transmit Packet Rate">
+					<statistics>
+						<stat name="rate" unit="Packet/s" id="2011" type="double">
+							<attributes>
+							</attributes>
+						</stat>
+					</statistics>
+				</object>
+				<object name="iface.eth0.txErrorsRateDouble" description="Ethernet Transmit Error Rate">
+					<statistics>
+						<stat name="rate" unit="Errors/s" id="2012" type="double">
+							<attributes>
+							</attributes>
+						</stat>
+					</statistics>
+				</object>
+
+				<!-- mlan0 (wifi) rates -->
+				<object name="iface.mlan0.rxBitRateDouble" description="WiFi Receive Bit Rate">
+					<statistics>
+						<stat name="rate" unit="bps" id="2107" type="double">
+							<attributes>
+							</attributes>
+						</stat>
+					</statistics>
+				</object>
+				<object name="iface.mlan0.rxPacketsRateDouble" description="WiFi Receive Packet Rate">
+					<statistics>
+						<stat name="rate" unit="Packet/s" id="2108" type="double">
+							<attributes>
+							</attributes>
+						</stat>
+					</statistics>
+				</object>
+				<object name="iface.mlan0.rxErrorsRateDouble" description="WiFi Receive Error Rate">
+					<statistics>
+						<stat name="rate" unit="Errors/s" id="2109" type="double">
+							<attributes>
+							</attributes>
+						</stat>
+					</statistics>
+				</object>
+				<object name="iface.mlan0.txBitRateDouble" description="WiFi Transmit Bit Rate">
+					<statistics>
+						<stat name="rate" unit="bps" id="2110" type="double">
+							<attributes>
+							</attributes>
+						</stat>
+					</statistics>
+				</object>
+				<object name="iface.mlan0.txPacketsRateDouble" description="WiFi Transmit Packet Rate">
+					<statistics>
+						<stat name="rate" unit="Packet/s" id="2111" type="double">
+							<attributes>
+							</attributes>
+						</stat>
+					</statistics>
+				</object>
+				<object name="iface.mlan0.txErrorsRateDouble" description="WiFi Transmit Error Rate">
+					<statistics>
+						<stat name="rate" unit="Errors/s" id="2112" type="double">
+							<attributes>
+							</attributes>
+						</stat>
+					</statistics>
+				</object>
+
+				<!-- thread_kw24_tun (old fsltun) rates (6lowPan) -->
+				<object name="iface.fsltun.rxBitRateDouble" description="fsltun Receive Bit Rate">
+					<statistics>
+						<stat name="rate" unit="bps" id="2207" type="double">
+							<attributes>
+							</attributes>
+						</stat>
+					</statistics>
+				</object>
+				<object name="iface.fsltun.rxPacketsRateDouble" description="fsltun Receive Packet Rate">
+					<statistics>
+						<stat name="rate" unit="Packet/s" id="2208" type="double">
+							<attributes>
+							</attributes>
+						</stat>
+					</statistics>
+				</object>
+				<object name="iface.fsltun.rxErrorsRateDouble" description="fsltun Receive Error Rate">
+					<statistics>
+						<stat name="rate" unit="Errors/s" id="2209" type="double">
+							<attributes>
+							</attributes>
+						</stat>
+					</statistics>
+				</object>
+				<object name="iface.fsltun.txBitRateDouble" description="fsltun Transmit Bit Rate">
+					<statistics>
+						<stat name="rate" unit="bps" id="2210" type="double">
+							<attributes>
+							</attributes>
+						</stat>
+					</statistics>
+				</object>
+				<object name="iface.fsltun.txPacketsRateDouble" description="fsltun Transmit Packet Rate">
+					<statistics>
+						<stat name="rate" unit="Packet/s" id="2211" type="double">
+							<attributes>
+							</attributes>
+						</stat>
+					</statistics>
+				</object>
+				<object name="iface.fsltun.txErrorsRateDouble" description="fsltun Transmit Error Rate">
+					<statistics>
+						<stat name="rate" unit="Errors/s" id="2212" type="double">
+							<attributes>
+							</attributes>
+						</stat>
+					</statistics>
+				</object>
+
+		</object_group>
+	</available_objects>
+</static_description>
+
+
+</capabilityfile_meter>

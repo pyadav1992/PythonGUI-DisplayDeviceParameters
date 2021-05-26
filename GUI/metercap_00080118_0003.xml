@@ -1,0 +1,58 @@
+<capabilityfile_meter capfile_version="0005" device_model="00080118" software_version="0003" date="2015-06-10">
+<!-- Allure Thermostat -->
+
+<interfaces>
+	<iface>device.interfaces.wlan0</iface>
+</interfaces>
+
+<!-- configuration -->
+<group name="thermostat" description="Thermostat">
+
+	<parameter name="thermostat.demo_id" description="Demo ID" paramid="103" type="string" default="" restartrequired="0" readonly="0">
+		<restrictions>
+			<length value="20" />
+		</restrictions>
+	</parameter>
+
+	<parameter name="thermostat.setpoint_temp" description="Set Point Temperature" paramid="100" type="string" default="0.0" restartrequired="0" readonly="0">
+		<restrictions>
+			<regexp value="[0-9]{1,10}(\.[0-9]{1,10})?"/>
+		</restrictions>
+	</parameter>
+
+	<parameter name="thermostat.hvac_mode" description="HVAC Mode" paramid="101" type="enum" default="0" restartrequired="0" readonly="0">
+		<restrictions>
+			<option description="Off" value="0" />
+			<option description="Heating" value="1" />
+			<option description="Cooling" value="2" />
+		</restrictions>
+	</parameter>
+
+	<parameter name="thermostat.fan_mode" description="Fan Mode" paramid="102" type="enum" default="0" restartrequired="0" readonly="0">
+		<restrictions>
+			<option description="Auto" value="0" />
+			<option description="On" value="1" />
+		</restrictions>
+	</parameter>
+
+</group>
+
+<!-- statistics -->
+<static_description>
+	<available_objects>
+		<object_group name="Thermostat">
+
+				<object name="thermostat.ambient_temp" description="Ambient Temperature [F]">
+					<statistics>
+						<stat name="count" unit="F" id="1000" type="double">
+							<attributes>
+							</attributes>
+						</stat>
+					</statistics>
+				</object>
+
+		</object_group>
+	</available_objects>
+</static_description>
+
+</capabilityfile_meter>

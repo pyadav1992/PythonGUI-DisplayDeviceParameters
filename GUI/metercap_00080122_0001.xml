@@ -1,0 +1,27 @@
+<capabilityfile_meter capfile_version="0005" device_model="00080122" software_version="0001" date="2015-06-07">
+<!-- FIDO Smart Lock -->
+
+<interfaces>
+	<iface>device.interfaces.zigbee0</iface><!-- 6LowPAN -->
+</interfaces>
+
+<!-- configuration -->
+<group name="thread_info" description="FIDO Smart Lock">
+
+	<parameter name="thread_info.demo_id" description="Demo ID" paramid="7" type="string" default="" restartrequired="0" readonly="0">
+		<restrictions>
+			<length value="20" />
+		</restrictions>
+	</parameter>
+
+	<parameter name="misc.smart_lock_cmd" description="Smart Lock Command" paramid="43" type="enum" default="0" restartrequired="0" readonly="0">
+		<restrictions>
+			<option description="Unlock" value="0" />
+			<option description="Lock" value="1" />
+		</restrictions>
+	</parameter>
+
+</group>
+
+
+</capabilityfile_meter>

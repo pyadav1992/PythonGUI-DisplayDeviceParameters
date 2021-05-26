@@ -1,0 +1,150 @@
+<capabilityfile_meter capfile_version="0005" device_model="00080130" software_version="0003" date="2015-06-07">
+<!-- Weather Station -->
+
+<interfaces>
+	<iface>device.interfaces.zigbee0</iface><!-- 6LowPAN -->
+</interfaces>
+
+<!-- configuration -->
+<group name="thread_info" description="Network Info">
+
+	<parameter name="thread_info.demo_id" description="Demo ID" paramid="7" type="string" default="" restartrequired="0" readonly="0">
+		<restrictions>
+			<length value="20" />
+		</restrictions>
+	</parameter>
+
+	<parameter name="thread_info.eui64" description="EUI64 (hex)" paramid="6" type="string" default="" restartrequired="0" readonly="1">
+		<restrictions>
+			<length value="20" />
+		</restrictions>
+	</parameter>
+
+	<parameter name="thread_info.short_address" description="Short Address (hex)" paramid="1" type="string" default="" restartrequired="0" readonly="1">
+		<restrictions>
+			<length value="20" />
+		</restrictions>
+	</parameter>
+
+	<parameter name="thread_info.mesh_local_address" description="Mesh Local Address" paramid="2" type="string" default="" restartrequired="0" readonly="1">
+		<restrictions>
+			<length value="50" />
+		</restrictions>
+	</parameter>
+
+	<parameter name="thread_info.ipv6_address" description="Global IPv6 Address" paramid="3" type="string" default="" restartrequired="0" readonly="1">
+		<restrictions>
+			<length value="50" />
+		</restrictions>
+	</parameter>
+
+	<parameter name="thread_info.manufacturer" description="Manufacturer" paramid="4" type="string" default="" restartrequired="0" readonly="1">
+		<restrictions>
+			<length value="50" />
+		</restrictions>
+	</parameter>
+
+</group>
+
+<!-- statistics -->
+<static_description>
+	<available_objects>
+		<object_group name="ThreadNode">
+
+				<object name="thread.node.temp" description="Temperature">
+					<statistics>
+						<stat name="count" unit="C" id="1001" type="double">
+							<attributes>
+							</attributes>
+						</stat>
+					</statistics>
+				</object>
+
+				<object name="thread.node.lqi" description="Link Quality Indicator">
+					<statistics>
+						<stat name="count" unit="-" id="1014" type="uint8">
+							<attributes>
+							</attributes>
+						</stat>
+					</statistics>
+				</object>
+
+
+				<object name="thread.node.ambient_temperature" description="Ambient Temperature">
+					<statistics>
+						<stat name="count" unit="C" id="1028" type="int32">
+							<attributes>
+							</attributes>
+						</stat>
+					</statistics>
+				</object>
+				<object name="thread.node.ambient_pressure" description="Ambient Pressure">
+					<statistics>
+						<stat name="count" unit="kPa" id="1029" type="double">
+							<attributes>
+							</attributes>
+						</stat>
+					</statistics>
+				</object>
+				<object name="thread.node.wind_speed" description="Wind Speed">
+					<statistics>
+						<stat name="count" unit="mph" id="1030" type="double">
+							<attributes>
+							</attributes>
+						</stat>
+					</statistics>
+				</object>
+				<object name="thread.node.wind_direction" description="Wind Direction">
+					<statistics>
+						<stat name="count" unit="Degrees (Nautical Bearing)" id="1031" type="double">
+							<attributes>
+							</attributes>
+						</stat>
+					</statistics>
+				</object>
+				<object name="thread.node.daily_rainfall" description="Daily Rainfall">
+					<statistics>
+						<stat name="count" unit="Inches" id="1032" type="double">
+							<attributes>
+							</attributes>
+						</stat>
+					</statistics>
+				</object>
+				<object name="thread.node.illuminance" description="Illuminance (Ambient Light Level)">
+					<statistics>
+						<stat name="count" unit="lx" id="1033" type="double">
+							<attributes>
+							</attributes>
+						</stat>
+					</statistics>
+				</object>
+				<object name="thread.node.voltage" description="Voltage">
+					<statistics>
+						<stat name="count" unit="V" id="1034" type="double">
+							<attributes>
+							</attributes>
+						</stat>
+					</statistics>
+				</object>
+				<object name="thread.node.current" description="Current">
+					<statistics>
+						<stat name="count" unit="A" id="1035" type="double">
+							<attributes>
+							</attributes>
+						</stat>
+					</statistics>
+				</object>
+				<object name="thread.node.energy" description="Energy">
+					<statistics>
+						<stat name="count" unit="W" id="1036" type="double">
+							<attributes>
+							</attributes>
+						</stat>
+					</statistics>
+				</object>
+
+		</object_group>
+	</available_objects>
+</static_description>
+
+</capabilityfile_meter>

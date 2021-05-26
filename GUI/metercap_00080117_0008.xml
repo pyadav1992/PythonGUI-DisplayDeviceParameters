@@ -1,0 +1,566 @@
+<capabilityfile_meter capfile_version="0005" device_model="00080117" software_version="0008" date="2015-06-08">
+<!-- Thread Generic Device (for Router and End Device) -->
+
+<interfaces>
+	<iface>device.interfaces.zigbee0</iface><!-- 6LowPAN -->
+</interfaces>
+
+<!-- configuration -->
+<group name="thread_info" description="Network Info">
+
+	<parameter name="thread_info.demo_id" description="Demo ID" paramid="7" type="string" default="" restartrequired="0" readonly="0">
+		<restrictions>
+			<length value="20" />
+		</restrictions>
+	</parameter>
+
+	<parameter name="thread_info.eui64" description="EUI64 (hex)" paramid="6" type="string" default="" restartrequired="0" readonly="1">
+		<restrictions>
+			<length value="20" />
+		</restrictions>
+	</parameter>
+
+	<parameter name="thread_info.short_address" description="Short Address (hex)" paramid="1" type="string" default="" restartrequired="0" readonly="1">
+		<restrictions>
+			<length value="20" />
+		</restrictions>
+	</parameter>
+
+	<parameter name="thread_info.mesh_local_address" description="Mesh Local Address" paramid="2" type="string" default="" restartrequired="0" readonly="1">
+		<restrictions>
+			<length value="50" />
+		</restrictions>
+	</parameter>
+
+	<parameter name="thread_info.ipv6_address" description="Global IPv6 Address" paramid="3" type="string" default="" restartrequired="0" readonly="1">
+		<restrictions>
+			<length value="50" />
+		</restrictions>
+	</parameter>
+
+	<parameter name="thread_info.manufacturer" description="Manufacturer" paramid="4" type="string" default="" restartrequired="0" readonly="1">
+		<restrictions>
+			<length value="50" />
+		</restrictions>
+	</parameter>
+
+</group>
+
+<group name="router_end_device_info" description="Router/End Device Info">
+	
+	<parameter name="router_end_device_info.device_logical_type" description="Device Logical Type" paramid="5" type="enum" default="0" restartrequired="0" readonly="1">
+		<restrictions>
+			<option description="Router" value="1" />
+			<option description="End Device" value="2" />
+		</restrictions>
+	</parameter>
+
+
+	<!-- only for router -->
+	<parameter name="router_end_device_info.node_address_mask" description="Node Address Mask" paramid="10" type="string" default="" restartrequired="0" readonly="1" enable_when="('router_end_device_info.device_logical_type' = 1)">
+		<restrictions>
+			<length value="150" />
+		</restrictions>
+	</parameter>
+
+
+	<!-- Leader Data - only for router -->
+	<parameter name="Leader_Data/instance_id" description="Network Segment Identifier" paramid="11" type="string" default="" restartrequired="0" readonly="1" enable_when="('router_end_device_info.device_logical_type' = 1)">
+		<restrictions>
+			<length value="20" />
+		</restrictions>
+	</parameter>
+	<parameter name="Leader_Data/weighing" description="Weighing" paramid="12" type="string" default="" restartrequired="0" readonly="1" enable_when="('router_end_device_info.device_logical_type' = 1)">
+		<restrictions>
+			<length value="20" />
+		</restrictions>
+	</parameter>
+	<parameter name="Leader_Data/version" description="Version" paramid="13" type="string" default="" restartrequired="0" readonly="1" enable_when="('router_end_device_info.device_logical_type' = 1)">
+		<restrictions>
+			<length value="20" />
+		</restrictions>
+	</parameter>
+	<parameter name="Leader_Data/stable_version" description="Stable Version" paramid="14" type="string" default="" restartrequired="0" readonly="1" enable_when="('router_end_device_info.device_logical_type' = 1)">
+		<restrictions>
+			<length value="20" />
+		</restrictions>
+	</parameter>
+	<parameter name="Leader_Data/router_id" description="Network Leader Router Id" paramid="15" type="string" default="" restartrequired="0" readonly="1" enable_when="('router_end_device_info.device_logical_type' = 1)">
+		<restrictions>
+			<length value="20" />
+		</restrictions>
+	</parameter>
+
+
+	<!-- Routing Table - only for router -->
+	<parameter name="Routing_Table/sequence_id" description="Sequence Id" paramid="16" type="string" default="" restartrequired="0" readonly="1" enable_when="('router_end_device_info.device_logical_type' = 1)">
+		<restrictions>
+			<length value="20" />
+		</restrictions>
+	</parameter>
+	<parameter name="Routing_Table/router_id_mask" description="Router Id Mask" paramid="17" type="string" default="" restartrequired="0" readonly="1" enable_when="('router_end_device_info.device_logical_type' = 1)">
+		<restrictions>
+			<length value="20" />
+		</restrictions>
+	</parameter>
+	<parameter name="Routing_Table/entries" description="Routing Entries" paramid="18" type="list" restartrequired="0" readonly="1" enable_when="('router_end_device_info.device_logical_type' = 1)">
+		<list max_entries="64">
+			<entry_type name="routing_entry" description="Routing Entry">
+				<item name="short_addr" description="Short Address" type="string" readonly="1">
+					<restrictions>
+						<length value="10" />
+					</restrictions>
+				</item>
+				<item name="neighbor_out_lq" description="Neighbor Out Link Quality" type="string" readonly="1">
+					<restrictions>
+						<length value="10" />
+					</restrictions>
+				</item>
+				<item name="neighbor_in_lq" description="Neighbor In Link Quality" type="string" readonly="1">
+					<restrictions>
+						<length value="10" />
+					</restrictions>
+				</item>
+				<item name="router_cost" description="Router Cost" type="string" readonly="1">
+					<restrictions>
+						<length value="10" />
+					</restrictions>
+				</item>
+			</entry_type>
+		</list>
+	</parameter>
+
+</group>
+
+<group name="light_control" description="LED Control">
+
+	<!-- LED configuration -->
+	<parameter name="light_control.led_1" description="LED 1" paramid="31" type="enum" default="0" restartrequired="0" readonly="0">
+		<restrictions>
+			<option description="Off" value="0" />
+			<option description="On" value="1" />
+			<option description="Flash" value="2" />
+		</restrictions>
+	</parameter>
+	<parameter name="light_control.led_2" description="LED 2" paramid="32" type="enum" default="0" restartrequired="0" readonly="0">
+		<restrictions>
+			<option description="Off" value="0" />
+			<option description="On" value="1" />
+			<option description="Flash" value="2" />
+		</restrictions>
+	</parameter>
+	<parameter name="light_control.led_3" description="LED 3" paramid="33" type="enum" default="0" restartrequired="0" readonly="0">
+		<restrictions>
+			<option description="Off" value="0" />
+			<option description="On" value="1" />
+			<option description="Flash" value="2" />
+		</restrictions>
+	</parameter>
+	<parameter name="light_control.led_4" description="LED 4" paramid="34" type="enum" default="0" restartrequired="0" readonly="0">
+		<restrictions>
+			<option description="Off" value="0" />
+			<option description="On" value="1" />
+			<option description="Flash" value="2" />
+		</restrictions>
+	</parameter>
+
+	<!-- enum: 0-"off", 1-"red", 2-"green", 3-"blue", 4-"yellow", 5-"white", 6-"cyan", 7-"magenta" -->
+	<parameter name="light_control.led_rgb" description="LED RGB" paramid="35" type="enum" default="0" restartrequired="0" readonly="0">
+		<restrictions>
+			<option description="Off" value="0" />
+			<option description="Red" value="1" />
+			<option description="Green" value="2" />
+			<option description="Blue" value="3" />
+			<option description="Yellow" value="4" />
+			<option description="White" value="5" />
+			<option description="Cyan" value="6" />
+			<option description="Magenta" value="7" />
+		</restrictions>
+	</parameter>
+
+</group>
+
+
+<group name="Misc" description="Misc">
+
+	<parameter name="misc.antenna_control" description="Antenna Control" paramid="40" type="enum" default="0" restartrequired="0" readonly="0">
+		<restrictions>
+			<option description="A" value="0" />
+			<option description="B" value="1" />
+		</restrictions>
+	</parameter>
+
+	<parameter name="misc.front_end_amplifier_control" description="Front End Amplifier Control" paramid="41" type="enum" default="0" restartrequired="0" readonly="0">
+		<restrictions>
+			<option description="Off" value="0" />
+			<option description="On" value="1" />
+		</restrictions>
+	</parameter>
+
+
+	<parameter name="misc.smart_lock_cmd" description="Smart Lock Command" paramid="43" type="enum" default="0" restartrequired="0" readonly="0">
+		<restrictions>
+			<option description="Unlock" value="0" />
+			<option description="Lock" value="1" />
+		</restrictions>
+	</parameter>
+
+</group>
+
+
+<!-- statistics -->
+<static_description>
+	<available_objects>
+		<object_group name="ThreadNode">
+
+				<object name="thread.node.temp" description="Temperature">
+					<statistics>
+						<stat name="count" unit="C" id="1001" type="double">
+							<attributes>
+							</attributes>
+						</stat>
+					</statistics>
+				</object>
+
+				<object name="thread.node.internal_temp" description="Internal Temperature">
+					<statistics>
+						<stat name="count" unit="C" id="1010" type="double">
+							<attributes>
+							</attributes>
+						</stat>
+					</statistics>
+				</object>
+
+				<!-- LED states -->
+				<object name="thread.node.led1_state" description="LED 1 State">
+					<statistics>
+						<stat name="count" unit="-" id="1002" type="uint8">
+							<attributes>
+							</attributes>
+						</stat>
+					</statistics>
+				</object>
+				<object name="thread.node.led2_state" description="LED 2 State">
+					<statistics>
+						<stat name="count" unit="-" id="1003" type="uint8">
+							<attributes>
+							</attributes>
+						</stat>
+					</statistics>
+				</object>
+				<object name="thread.node.led3_state" description="LED 3 State">
+					<statistics>
+						<stat name="count" unit="-" id="1004" type="uint8">
+							<attributes>
+							</attributes>
+						</stat>
+					</statistics>
+				</object>
+				<object name="thread.node.led4_state" description="LED 4 State">
+					<statistics>
+						<stat name="count" unit="-" id="1005" type="uint8">
+							<attributes>
+							</attributes>
+						</stat>
+					</statistics>
+				</object>
+
+
+				<!-- RGB LED states -->
+				<!-- enum: 0-"off", 1-"red", 2-"green", 3-"blue", 4-"yellow", 5-"white", 6-"cyan", 7-"magenta" -->
+				<object name="thread.node.rgb_led_status" description="RGB Led Status">
+					<statistics>
+						<stat name="count" unit="-" id="1044" type="uint8">
+							<attributes>
+							</attributes>
+						</stat>
+					</statistics>
+				</object>
+	
+
+				<object name="thread.node.lqi" description="Link Quality Indicator">
+					<statistics>
+						<stat name="count" unit="-" id="1014" type="uint8">
+							<attributes>
+							</attributes>
+						</stat>
+					</statistics>
+				</object>
+
+
+				<!-- doors -->
+				<!-- 0-close; 1-open -->
+				<object name="thread.node.front_door" description="Front Door">
+					<statistics>
+						<stat name="count" unit="-" id="1015" type="uint8">
+							<attributes>
+							</attributes>
+						</stat>
+					</statistics>
+				</object>
+				<!-- 0-close; 1-open -->
+				<object name="thread.node.garage_door" description="Backdoor">
+					<statistics>
+						<stat name="count" unit="-" id="1016" type="uint8">
+							<attributes>
+							</attributes>
+						</stat>
+					</statistics>
+				</object>
+
+
+				<!-- windows -->
+				<!-- 0-close; 1-open -->
+				<object name="thread.node.kitchen_window" description="Kitchen Window">
+					<statistics>
+						<stat name="count" unit="-" id="1017" type="uint8">
+							<attributes>
+							</attributes>
+						</stat>
+					</statistics>
+				</object>
+				<!-- 0-close; 1-open -->
+				<object name="thread.node.living_window" description="Living Window">
+					<statistics>
+						<stat name="count" unit="-" id="1018" type="uint8">
+							<attributes>
+							</attributes>
+						</stat>
+					</statistics>
+				</object>
+
+
+				<object name="thread.node.pump_flowrate" description="Pump Flowrate">
+					<statistics>
+						<stat name="count" unit="-" id="1019" type="uint32">
+							<attributes>
+							</attributes>
+						</stat>
+					</statistics>
+				</object>
+
+				<object name="thread.node.water_temp" description="Water Temperature">
+					<statistics>
+						<stat name="count" unit="C" id="1020" type="int32">
+							<attributes>
+							</attributes>
+						</stat>
+					</statistics>
+				</object>
+
+
+				<!-- accelerometer -->
+				<object name="thread.node.raw_accelerometer_x" description="Raw Accelerometer X">
+					<statistics>
+						<stat name="count" unit="G" id="1021" type="double">
+							<attributes>
+							</attributes>
+						</stat>
+					</statistics>
+				</object>
+				<object name="thread.node.raw_accelerometer_y" description="Raw Accelerometer Y">
+					<statistics>
+						<stat name="count" unit="G" id="1022" type="double">
+							<attributes>
+							</attributes>
+						</stat>
+					</statistics>
+				</object>
+				<object name="thread.node.raw_accelerometer_z" description="Raw Accelerometer Z">
+					<statistics>
+						<stat name="count" unit="G" id="1023" type="double">
+							<attributes>
+							</attributes>
+						</stat>
+					</statistics>
+				</object>
+
+
+				<!-- orientation -->
+				<object name="thread.node.orientation_psi" description="Orientation Psi">
+					<statistics>
+						<stat name="count" unit="Degrees" id="1024" type="double">
+							<attributes>
+							</attributes>
+						</stat>
+					</statistics>
+				</object>
+				<object name="thread.node.orientation_theta" description="Orientation Theta">
+					<statistics>
+						<stat name="count" unit="Degrees" id="1025" type="double">
+							<attributes>
+							</attributes>
+						</stat>
+					</statistics>
+				</object>
+				<object name="thread.node.orientation_phi" description="Orientation Phi">
+					<statistics>
+						<stat name="count" unit="Degrees" id="1026" type="double">
+							<attributes>
+							</attributes>
+						</stat>
+					</statistics>
+				</object>
+
+
+				<object name="thread.node.timestamp" description="Timestamp">
+					<statistics>
+						<stat name="count" unit="ms" id="1027" type="uint32">
+							<attributes>
+							</attributes>
+						</stat>
+					</statistics>
+				</object>
+
+
+				<object name="thread.node.ambient_temperature" description="Ambient Temperature">
+					<statistics>
+						<stat name="count" unit="C" id="1028" type="int32">
+							<attributes>
+							</attributes>
+						</stat>
+					</statistics>
+				</object>
+				<object name="thread.node.ambient_pressure" description="Ambient Pressure">
+					<statistics>
+						<stat name="count" unit="kPa" id="1029" type="double">
+							<attributes>
+							</attributes>
+						</stat>
+					</statistics>
+				</object>
+				<object name="thread.node.wind_speed" description="Wind Speed">
+					<statistics>
+						<stat name="count" unit="mph" id="1030" type="double">
+							<attributes>
+							</attributes>
+						</stat>
+					</statistics>
+				</object>
+				<object name="thread.node.wind_direction" description="Wind Direction">
+					<statistics>
+						<stat name="count" unit="Degrees (Nautical Bearing)" id="1031" type="double">
+							<attributes>
+							</attributes>
+						</stat>
+					</statistics>
+				</object>
+				<object name="thread.node.daily_rainfall" description="Daily Rainfall">
+					<statistics>
+						<stat name="count" unit="Inches" id="1032" type="double">
+							<attributes>
+							</attributes>
+						</stat>
+					</statistics>
+				</object>
+				<object name="thread.node.illuminance" description="Illuminance (Ambient Light Level)">
+					<statistics>
+						<stat name="count" unit="lx" id="1033" type="double">
+							<attributes>
+							</attributes>
+						</stat>
+					</statistics>
+				</object>
+				<object name="thread.node.voltage" description="Voltage">
+					<statistics>
+						<stat name="count" unit="V" id="1034" type="double">
+							<attributes>
+							</attributes>
+						</stat>
+					</statistics>
+				</object>
+				<object name="thread.node.current" description="Current">
+					<statistics>
+						<stat name="count" unit="A" id="1035" type="double">
+							<attributes>
+							</attributes>
+						</stat>
+					</statistics>
+				</object>
+				<object name="thread.node.energy" description="Energy">
+					<statistics>
+						<stat name="count" unit="W" id="1036" type="double">
+							<attributes>
+							</attributes>
+						</stat>
+					</statistics>
+				</object>
+
+				<!-- magnetometer -->
+				<object name="thread.node.raw_magnetometer_x" description="Raw Magnetometer X">
+					<statistics>
+						<stat name="count" unit="micro Tesla (uT)" id="1038" type="double">
+							<attributes>
+							</attributes>
+						</stat>
+					</statistics>
+				</object>
+				<object name="thread.node.raw_magnetometer_y" description="Raw Magnetometer Y">
+					<statistics>
+						<stat name="count" unit="micro Tesla (uT)" id="1039" type="double">
+							<attributes>
+							</attributes>
+						</stat>
+					</statistics>
+				</object>
+				<object name="thread.node.raw_magnetometer_z" description="Raw Magnetometer Z">
+					<statistics>
+						<stat name="count" unit="micro Tesla (uT)" id="1040" type="double">
+							<attributes>
+							</attributes>
+						</stat>
+					</statistics>
+				</object>
+
+				<!-- gyroscope -->
+				<object name="thread.node.raw_gyroscope_x" description="Raw Gyroscope X">
+					<statistics>
+						<stat name="count" unit="Degrees per second (dps)" id="1041" type="double">
+							<attributes>
+							</attributes>
+						</stat>
+					</statistics>
+				</object>
+				<object name="thread.node.raw_gyroscope_y" description="Raw Gyroscope Y">
+					<statistics>
+						<stat name="count" unit="Degrees per second (dps)" id="1042" type="double">
+							<attributes>
+							</attributes>
+						</stat>
+					</statistics>
+				</object>
+				<object name="thread.node.raw_gyroscope_z" description="Raw Gyroscope Z">
+					<statistics>
+						<stat name="count" unit="Degrees per second (dps)" id="1043" type="double">
+							<attributes>
+							</attributes>
+						</stat>
+					</statistics>
+				</object>
+
+				<!-- enum: 1-"A", 2-"B" -->
+				<object name="thread.node.antenna_status" description="Antenna Status">
+					<statistics>
+						<stat name="count" unit="-" id="1045" type="uint8">
+							<attributes>
+							</attributes>
+						</stat>
+					</statistics>
+				</object>
+
+
+				<!-- 0-unlock; 1-lock -->
+				<object name="thread.node.smart_lock_status" description="Door Lock State">
+					<statistics>
+						<stat name="count" unit="-" id="1053" type="uint8">
+							<attributes>
+							</attributes>
+						</stat>
+					</statistics>
+				</object>
+
+		</object_group>
+	</available_objects>
+</static_description>
+
+</capabilityfile_meter>

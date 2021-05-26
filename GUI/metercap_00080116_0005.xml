@@ -1,0 +1,134 @@
+<capabilityfile_meter capfile_version="0005" device_model="00080116" software_version="0005" date="2015-05-05">
+<!-- AllJoyn Light Bulb -->
+
+<interfaces>
+	<iface>device.interfaces.wlan0</iface>
+</interfaces>
+
+<!-- configuration -->
+<group name="alljoyn_light_bulb" description="Light Bulb">
+
+	<parameter name="alljoyn_light_bulb_info.demo_id" description="Demo ID" paramid="4" type="string" default="" restartrequired="0" readonly="0">
+		<restrictions>
+			<length value="20" />
+		</restrictions>
+	</parameter>
+
+	<parameter name="alljoyn_light_bulb_info.alljoyn_id" description="AllJoyn ID" paramid="1" type="string" default="" restartrequired="0" readonly="1">
+		<restrictions>
+			<length value="50" />
+		</restrictions>
+	</parameter>
+
+	<parameter name="alljoyn_light_bulb_info.alljoyn_name" description="AllJoyn Name" paramid="3" type="string" default="" restartrequired="0" readonly="1">
+		<restrictions>
+			<length value="50" />
+		</restrictions>
+	</parameter>
+
+	<parameter name="alljoyn_light_bulb_info.light_id" description="Light ID" paramid="2" type="enum" default="0" restartrequired="0" readonly="0">
+		<restrictions>
+			<option description="Undefined" value="0" />
+			<option description="1" value="1" />
+			<option description="2" value="2" />
+			<option description="3" value="3" />
+			<option description="4" value="4" />
+		</restrictions>
+	</parameter>
+
+
+	<!-- Control -->
+	<parameter name="Control/light_bulb_state" description="Light State" paramid="10" type="enum" default="0" restartrequired="0" readonly="0">
+		<restrictions>
+			<option description="Off" value="0" />
+			<option description="On" value="1" />
+		</restrictions>
+	</parameter>
+	<parameter name="Control/light_bulb_brightness" description="Brightness [0-100 %]" paramid="11" type="uint32" default="1" restartrequired="0" readonly="0">
+		<restrictions>
+			<min value="0"/>
+			<max value="100"/>
+			<step value="1"/>
+		</restrictions>
+	</parameter>
+	<parameter name="Control/light_bulb_hue" description="Hue [0-360 Degrees]" paramid="12" type="uint32" default="0" restartrequired="0" readonly="0">
+		<restrictions>
+			<min value="0"/>
+			<max value="360"/>
+			<step value="1"/>
+		</restrictions>
+	</parameter>
+	<parameter name="Control/light_bulb_saturation" description="Saturation [0-100 %]" paramid="13" type="uint32" default="1" restartrequired="0" readonly="0">
+		<restrictions>
+			<min value="0"/>
+			<max value="100"/>
+			<step value="1"/>
+		</restrictions>
+	</parameter>
+	<parameter name="Control/light_bulb_temperature" description="Temperature [2500-2900 Kelvin]" paramid="14" type="uint32" default="2700" restartrequired="0" readonly="0">
+		<restrictions>
+			<min value="2500"/>
+			<max value="2900"/>
+			<step value="1"/>
+		</restrictions>
+	</parameter>
+
+</group>
+
+
+<!-- statistics -->
+<static_description>
+	<available_objects>
+		<object_group name="AllJoynLightBulb">
+
+				<object name="alljoyn_light_bulb.light_state" description="Light State">
+					<statistics>
+						<stat name="count" unit="-" id="1001" type="uint8">
+							<attributes>
+							</attributes>
+						</stat>
+					</statistics>
+				</object>
+
+				<object name="alljoyn_light_bulb.brightness" description="Brightness">
+					<statistics>
+						<stat name="count" unit="%" id="1002" type="uint8">
+							<attributes>
+							</attributes>
+						</stat>
+					</statistics>
+				</object>
+
+				<object name="alljoyn_light_bulb.hue" description="Hue">
+					<statistics>
+						<stat name="count" unit="-" id="1003" type="uint8">
+							<attributes>
+							</attributes>
+						</stat>
+					</statistics>
+				</object>
+
+				<object name="alljoyn_light_bulb.saturation" description="Saturation">
+					<statistics>
+						<stat name="count" unit="%" id="1004" type="uint8">
+							<attributes>
+							</attributes>
+						</stat>
+					</statistics>
+				</object>
+
+				<object name="alljoyn_light_bulb.temperature" description="Temperature">
+					<statistics>
+						<stat name="count" unit="%" id="1005" type="uint32">
+							<attributes>
+							</attributes>
+						</stat>
+					</statistics>
+				</object>
+
+
+		</object_group>
+	</available_objects>
+</static_description>
+
+</capabilityfile_meter>

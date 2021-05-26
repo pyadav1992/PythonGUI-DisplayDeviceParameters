@@ -1,0 +1,181 @@
+<capabilityfile_meter capfile_version="0005" device_model="00080138" software_version="0003" date="2015-06-08">
+<!-- Thread Accelerator Sensors Demo -->
+
+<interfaces>
+	<iface>device.interfaces.zigbee0</iface><!-- 6LowPAN -->
+</interfaces>
+
+<!-- configuration -->
+<group name="thread_info" description="Network Info">
+
+	<parameter name="thread_info.demo_id" description="Demo ID" paramid="7" type="string" default="" restartrequired="0" readonly="0">
+		<restrictions>
+			<length value="20" />
+		</restrictions>
+	</parameter>
+
+	<parameter name="thread_info.eui64" description="EUI64 (hex)" paramid="6" type="string" default="" restartrequired="0" readonly="1">
+		<restrictions>
+			<length value="20" />
+		</restrictions>
+	</parameter>
+
+	<parameter name="thread_info.short_address" description="Short Address (hex)" paramid="1" type="string" default="" restartrequired="0" readonly="1">
+		<restrictions>
+			<length value="20" />
+		</restrictions>
+	</parameter>
+
+	<parameter name="thread_info.mesh_local_address" description="Mesh Local Address" paramid="2" type="string" default="" restartrequired="0" readonly="1">
+		<restrictions>
+			<length value="50" />
+		</restrictions>
+	</parameter>
+
+	<parameter name="thread_info.ipv6_address" description="Global IPv6 Address" paramid="3" type="string" default="" restartrequired="0" readonly="1">
+		<restrictions>
+			<length value="50" />
+		</restrictions>
+	</parameter>
+
+	<parameter name="thread_info.manufacturer" description="Manufacturer" paramid="4" type="string" default="" restartrequired="0" readonly="1">
+		<restrictions>
+			<length value="50" />
+		</restrictions>
+	</parameter>
+
+</group>
+
+
+<group name="light_control" description="LED Control">
+
+	<!-- LED configuration -->
+	<parameter name="light_control.led_1" description="LED 1" paramid="31" type="enum" default="0" restartrequired="0" readonly="0">
+		<restrictions>
+			<option description="Off" value="0" />
+			<option description="On" value="1" />
+			<option description="Flash" value="2" />
+		</restrictions>
+	</parameter>
+	<parameter name="light_control.led_2" description="LED 2" paramid="32" type="enum" default="0" restartrequired="0" readonly="0">
+		<restrictions>
+			<option description="Off" value="0" />
+			<option description="On" value="1" />
+			<option description="Flash" value="2" />
+		</restrictions>
+	</parameter>
+	<parameter name="light_control.led_3" description="LED 3" paramid="33" type="enum" default="0" restartrequired="0" readonly="0">
+		<restrictions>
+			<option description="Off" value="0" />
+			<option description="On" value="1" />
+			<option description="Flash" value="2" />
+		</restrictions>
+	</parameter>
+
+</group>
+
+
+<group name="Misc" description="Misc">
+
+<!--
+	<parameter name="misc.measurements_delay" description="Measurements Delay" paramid="42" type="uint32" default="0" restartrequired="0" readonly="0">
+		<restrictions>
+			<min value="0"/>
+			<max value="4294967295"/>
+			<step value="1"/>
+		</restrictions>
+	</parameter>
+-->
+
+	<parameter name="misc.last_gesture" description="Last Gesture" paramid="45" type="string" default="" restartrequired="0" readonly="1">
+		<restrictions>
+			<length value="100" />
+		</restrictions>
+	</parameter>
+
+</group>
+
+
+<!-- statistics -->
+<static_description>
+	<available_objects>
+		<object_group name="ThreadNode">
+
+				<object name="thread.node.temp" description="Temperature">
+					<statistics>
+						<stat name="count" unit="C" id="1001" type="double">
+							<attributes>
+							</attributes>
+						</stat>
+					</statistics>
+				</object>
+
+				<!-- LED states -->
+				<object name="thread.node.led1_state" description="LED 1 State">
+					<statistics>
+						<stat name="count" unit="-" id="1002" type="uint8">
+							<attributes>
+							</attributes>
+						</stat>
+					</statistics>
+				</object>
+				<object name="thread.node.led2_state" description="LED 2 State">
+					<statistics>
+						<stat name="count" unit="-" id="1003" type="uint8">
+							<attributes>
+							</attributes>
+						</stat>
+					</statistics>
+				</object>
+				<object name="thread.node.led3_state" description="LED 3 State">
+					<statistics>
+						<stat name="count" unit="-" id="1004" type="uint8">
+							<attributes>
+							</attributes>
+						</stat>
+					</statistics>
+				</object>
+
+
+				<object name="thread.node.lqi" description="Link Quality Indicator">
+					<statistics>
+						<stat name="count" unit="-" id="1014" type="uint8">
+							<attributes>
+							</attributes>
+						</stat>
+					</statistics>
+				</object>
+
+
+				<!-- accelerometer -->
+				<object name="thread.node.raw_accelerometer_x" description="Raw Accelerometer X">
+					<statistics>
+						<stat name="count" unit="G" id="1021" type="double">
+							<attributes>
+							</attributes>
+						</stat>
+					</statistics>
+				</object>
+				<object name="thread.node.raw_accelerometer_y" description="Raw Accelerometer Y">
+					<statistics>
+						<stat name="count" unit="G" id="1022" type="double">
+							<attributes>
+							</attributes>
+						</stat>
+					</statistics>
+				</object>
+				<object name="thread.node.raw_accelerometer_z" description="Raw Accelerometer Z">
+					<statistics>
+						<stat name="count" unit="G" id="1023" type="double">
+							<attributes>
+							</attributes>
+						</stat>
+					</statistics>
+				</object>
+
+
+		</object_group>
+	</available_objects>
+</static_description>
+
+</capabilityfile_meter>

@@ -1,0 +1,92 @@
+<capabilityfile_meter capfile_version="0005" device_model="00080121" software_version="0005" date="2015-06-16">
+<!-- mBed Coffee machine -->
+
+<interfaces>
+	<iface>device.interfaces.eth0</iface>
+</interfaces>
+
+<group name="Program" description="Coffee Machine">
+
+	<parameter name="thread_info.demo_id" description="Demo ID" paramid="7" type="string" default="" restartrequired="0" readonly="0">
+		<restrictions>
+			<length value="20" />
+		</restrictions>
+	</parameter>
+
+</group>
+<group name="Network" description="Network">
+	<parameter name="thread_info.mac_address" description="MAC Address (hex)" paramid="46" type="string" default="" restartrequired="0" readonly="1">
+		<restrictions>
+			<length value="20" />
+		</restrictions>
+	</parameter>
+
+	<parameter name="thread_info.ipv4_address" description="IPv4 Address" paramid="47" type="string" default="" restartrequired="0" readonly="1">
+		<restrictions>
+			<length value="50" />
+		</restrictions>
+	</parameter>
+</group>
+
+
+<!-- statistics -->
+<static_description>
+	<available_objects>
+		<object_group name="CoffeeMachine">
+
+				<object name="coffee_machine.decaffeinato_count" description="Decaffeinato Intenso Count">
+					<statistics>
+						<stat name="count" unit="" id="1047" type="uint32">
+							<attributes>
+							</attributes>
+						</stat>
+					</statistics>
+				</object>
+
+				<object name="coffee_machine.livanto_count" description="Livanto Count">
+					<statistics>
+						<stat name="count" unit="" id="1048" type="uint32">
+							<attributes>
+							</attributes>
+						</stat>
+					</statistics>
+				</object>
+
+				<object name="coffee_machine.roma_count" description="Roma Count">
+					<statistics>
+						<stat name="count" unit="" id="1049" type="uint32">
+							<attributes>
+							</attributes>
+						</stat>
+					</statistics>
+				</object>
+
+				<object name="coffee_machine.vivalto_count" description="Vivalto Count">
+					<statistics>
+						<stat name="count" unit="" id="1050" type="uint32">
+							<attributes>
+							</attributes>
+						</stat>
+					</statistics>
+				</object>
+
+				<!-- possible values: -->
+				<!--   "unknown"              = 0 -->
+				<!--   "decaffeinato intenso" = 1 -->
+				<!--   "livanto"              = 2 -->
+				<!--   "roma"                 = 3 -->
+				<!--   "vivalto lungo"        = 4 -->
+				<object name="coffee_machine.program" description="Coffee Program">
+					<statistics>
+						<stat name="count" unit="" id="1057" type="uint32">
+							<attributes>
+							</attributes>
+						</stat>
+					</statistics>
+				</object>
+
+		</object_group>
+	</available_objects>
+</static_description>
+
+</capabilityfile_meter>
